@@ -14,52 +14,57 @@
 
 **Використані зв’язки**:
 
-Родо-видові зв’язки (belongs_to) описують ієрархічні відносини між типами побутової техніки:
+Родо-видові зв’язки (is_a) описують ієрархічні відносини між типами побутової техніки:
 
-**Родо-видові зв'язки (is_a)**
-is_a(home_appliance, household_item).
-is_a(kitchen_appliance, home_appliance).
-is_a(cleaning_appliance, home_appliance).
-is_a(entertainment_device, home_appliance).
-is_a(climate_control_appliance, home_appliance).
+% Нова категорія для appliance
+is_a(appliance, household_item).
 
-is_a(fridge, kitchen_appliance).
-is_a(microwave, kitchen_appliance).
-is_a(oven, kitchen_appliance).
-is_a(dishwasher, kitchen_appliance).
+is_a(kitchen_device, appliance).
+is_a(cleaning_device, appliance).
+is_a(entertainment_equipment, appliance).
+is_a(climate_control_device, appliance).
 
-is_a(vacuum_cleaner, cleaning_appliance).
-is_a(washing_machine, cleaning_appliance).
-is_a(iron, cleaning_appliance).
+% Kitchen Devices
+is_a(refrigerator, kitchen_device).
+is_a(microwave_oven, kitchen_device).
+is_a(electric_stove, kitchen_device).
 
-is_a(tv, entertainment_device).
-is_a(stereo_system, entertainment_device).
-is_a(game_console, entertainment_device).
+part_of(door_handle, refrigerator).
+part_of(cooling_unit, refrigerator).
+part_of(magnetron_unit, microwave_oven).
+part_of(rotating_plate, microwave_oven).
+part_of(burners, electric_stove).
+part_of(control_knob, electric_stove).
 
-is_a(air_conditioner, climate_control_appliance).
-is_a(heater, climate_control_appliance).
+% Cleaning Devices
+is_a(vacuum, cleaning_device).
+is_a(laundry_machine, cleaning_device).
+is_a(steam_iron, cleaning_device).
 
-**Зв'язки частина-ціле (part_of)**
-part_of(motor, vacuum_cleaner).
-part_of(drum, washing_machine).
-part_of(filter, washing_machine).
-part_of(speakers, stereo_system).
-part_of(controller, game_console).
+part_of(motor_unit, vacuum).
+part_of(dust_bag, vacuum).
+part_of(drum_unit, laundry_machine).
+part_of(water_filter, laundry_machine).
+part_of(steam_generator, steam_iron).
+part_of(heat_plate, steam_iron).
 
-part_of(door, fridge).
-part_of(compressor, fridge).
-part_of(shelves, fridge).
+% Entertainment Equipment
+is_a(television, entertainment_equipment).
+is_a(sound_system, entertainment_equipment).
 
-part_of(magnetron, microwave).
-part_of(turntable, microwave).
+part_of(display_screen, television).
+part_of(remote_unit, television).
+part_of(speaker, sound_system).
+part_of(audio_amplifier, sound_system).
 
-part_of(screen, tv).
-part_of(remote_control, tv).
-part_of(antenna, tv).
+% Climate Control Devices
+is_a(air_conditioner, climate_control_device).
+is_a(electric_heater, climate_control_device).
 
-part_of(control_panel, air_conditioner).
-part_of(fan, air_conditioner).
-part_of(heater_element, heater).
+part_of(control_board, air_conditioner).
+part_of(fan_blade, air_conditioner).
+part_of(heating_element, electric_heater).
+part_of(thermostat, electric_heater).
 Всього фактів:
 
 **Родо-видові зв’язки**: 18 фактів.
@@ -110,38 +115,47 @@ part_of(heater_element, heater).
   - Структура онтології задовольняє вимоги щодо мінімальної висоти та фактору галуження. Наприклад, дерево для категорії `appliance` виглядає так:
 
   ```
-  appliance
-  ├── kitchen_device
-  │   ├── refrigerator
-  │   │   ├── door_handle
-  │   │   └── cooling_unit
-  │   ├── microwave_oven
-  │   │   ├── magnetron_unit
-  │   │   └── rotating_plate
-  │   └── electric_stove
-  ├── cleaning_device
-  │   ├── vacuum
-  │   │   └── motor_unit
-  │   ├── laundry_machine
-  │   │   ├── drum_unit
-  │   │   └── water_filter
-  │   └── steam_iron
-  ├── entertainment_equipment
-  │   ├── television
-  │   │   ├── display_screen
-  │   │   └── remote_unit
-  │   └── sound_system
-  │       └── speaker
-  └── climate_control_device
+
+aappliance
+├── kitchen_device
+│   ├── refrigerator
+│   │   ├── door_handle
+│   │   └── cooling_unit
+│   ├── microwave_oven
+│   │   ├── magnetron_unit
+│   │   └── rotating_plate
+│   └── electric_stove
+│       ├── burners
+│       └── control_knob
+├── cleaning_device
+│   ├── vacuum
+│   │   ├── motor_unit
+│   │   └── dust_bag
+│   ├── laundry_machine
+│   │   ├── drum_unit
+│   │   └── water_filter
+│   └── steam_iron
+│       ├── steam_generator
+│       └── heat_plate
+├── entertainment_equipment
+│   ├── television
+│   │   ├── display_screen
+│   │   └── remote_unit
+│   └── sound_system
+│       ├── speaker
+│       └── audio_amplifier
+└── climate_control_device
     ├── air_conditioner
     │   ├── control_board
     │   └── fan_blade
     └── electric_heater
-        └── heating_element
+        ├── heating_element
+        └── thermostat
+
 
   ```
 
-  **Вимоги до фактору галуження та висоти дерева:**
+**Вимоги до фактору галуження та висоти дерева:**
 
 - **Фактор галуження ≥2**: Кожен вузол має принаймні дві підкатегорії або компоненти. Наприклад, appliance має чотири підкатегорії (kitchen_device, cleaning_device, entertainment_equipment, climate_control_device), а кожна з цих підкатегорій має свої підкатегорії або компоненти.
 - **Висота ≥3**: Від кореня (appliance) до компонентів таких як door_handle, display_screen або heating_element є принаймні три рівні.
@@ -158,7 +172,7 @@ part_of(heater_element, heater).
 
 **Опис:** Потрібно створити мінімум 25 фактів, що описують об'єкти та їхні зв'язки у вибраній предметній області. Ці факти повинні включати використання зв'язків `is_a` (родо-видові) та `part_of` (частина-ціле).
 
-**Реалізація:** У вашій базі знань міститься більше 25 фактів, що описують транспортні засоби та їхні частини:
+**Реалізація:** У базі знань міститься більше 25 фактів, що описують транспортні засоби та їхні частини:
 
 Родове дерево (is_a): 23 факти (наприклад, is_a(fridge, kitchen_appliance), is_a(vacuum_cleaner, cleaning_appliance)).
 Частина-ціле (part_of): 14 фактів (наприклад, part_of(drum, washing_machine), part_of(shelves, fridge)).
@@ -169,7 +183,7 @@ part_of(heater_element, heater).
 
 **Опис:** Потрібно написати правила, які забезпечують можливість виведення нових фактів на основі існуючих. Це можуть бути правила транзитивності та спадкування.
 
-**Реалізація:** У вашому коді реалізовано правила для виведення нових фактів:
+**Реалізація:** У коді реалізовано правила для виведення нових фактів:
 
 - **Транзитивність родо-видових зв'язків (`is_a/2`):**
 

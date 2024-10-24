@@ -6,50 +6,56 @@
 :- table is_a/2.
 :- table part_of/2.
 
-% Родо-видові зв'язки (is_a)
-is_a(home_appliance, household_item).
-is_a(kitchen_appliance, home_appliance).
-is_a(cleaning_appliance, home_appliance).
-is_a(entertainment_device, home_appliance).
-is_a(climate_control_appliance, home_appliance).
+% Нова категорія для appliance
+is_a(appliance, household_item).
 
-is_a(fridge, kitchen_appliance).
-is_a(microwave, kitchen_appliance).
-is_a(oven, kitchen_appliance).
-is_a(dishwasher, kitchen_appliance).
+is_a(kitchen_device, appliance).
+is_a(cleaning_device, appliance).
+is_a(entertainment_equipment, appliance).
+is_a(climate_control_device, appliance).
 
-is_a(vacuum_cleaner, cleaning_appliance).
-is_a(washing_machine, cleaning_appliance).
-is_a(iron, cleaning_appliance).
+% Kitchen Devices
+is_a(refrigerator, kitchen_device).
+is_a(microwave_oven, kitchen_device).
+is_a(electric_stove, kitchen_device).
 
-is_a(tv, entertainment_device).
-is_a(stereo_system, entertainment_device).
-is_a(game_console, entertainment_device).
+part_of(door_handle, refrigerator).
+part_of(cooling_unit, refrigerator).
+part_of(magnetron_unit, microwave_oven).
+part_of(rotating_plate, microwave_oven).
+part_of(burners, electric_stove).
+part_of(control_knob, electric_stove).
 
-is_a(air_conditioner, climate_control_appliance).
-is_a(heater, climate_control_appliance).
+% Cleaning Devices
+is_a(vacuum, cleaning_device).
+is_a(laundry_machine, cleaning_device).
+is_a(steam_iron, cleaning_device).
 
-% Зв'язки частина-ціле (part_of)
-part_of(motor, vacuum_cleaner).
-part_of(drum, washing_machine).
-part_of(filter, washing_machine).
-part_of(speakers, stereo_system).
-part_of(controller, game_console).
+part_of(motor_unit, vacuum).
+part_of(dust_bag, vacuum).
+part_of(drum_unit, laundry_machine).
+part_of(water_filter, laundry_machine).
+part_of(steam_generator, steam_iron).
+part_of(heat_plate, steam_iron).
 
-part_of(door, fridge).
-part_of(compressor, fridge).
-part_of(shelves, fridge).
+% Entertainment Equipment
+is_a(television, entertainment_equipment).
+is_a(sound_system, entertainment_equipment).
 
-part_of(magnetron, microwave).
-part_of(turntable, microwave).
+part_of(display_screen, television).
+part_of(remote_unit, television).
+part_of(speaker, sound_system).
+part_of(audio_amplifier, sound_system).
 
-part_of(screen, tv).
-part_of(remote_control, tv).
-part_of(antenna, tv).
+% Climate Control Devices
+is_a(air_conditioner, climate_control_device).
+is_a(electric_heater, climate_control_device).
 
-part_of(control_panel, air_conditioner).
-part_of(fan, air_conditioner).
-part_of(heater_element, heater).
+part_of(control_board, air_conditioner).
+part_of(fan_blade, air_conditioner).
+part_of(heating_element, electric_heater).
+part_of(thermostat, electric_heater).
+
 
 % Правила виведення
 
