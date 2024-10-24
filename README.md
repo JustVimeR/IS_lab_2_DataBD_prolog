@@ -116,41 +116,101 @@ part_of(thermostat, electric_heater).
 
   ```
 
-aappliance
+appliance
 ├── kitchen_device
 │   ├── refrigerator
-│   │   ├── door_handle
-│   │   └── cooling_unit
+│   │   ├── samsung_refrigerator
+│   │   │   ├── door_handle
+│   │   │   ├── cooling_unit
+│   │   │   └── shelves
+│   │   └── lg_refrigerator
+│   │       ├── ice_dispenser
+│   │       ├── cooling_unit
+│   │       └── shelves
 │   ├── microwave_oven
-│   │   ├── magnetron_unit
-│   │   └── rotating_plate
+│   │   ├── bosch_microwave
+│   │   │   ├── magnetron_unit
+│   │   │   ├── rotating_plate
+│   │   │   └── timer
+│   │   └── panasonic_microwave
+│   │       ├── magnetron_unit
+│   │       ├── rotating_plate
+│   │       └── grill_element
 │   └── electric_stove
-│       ├── burners
-│       └── control_knob
+│       ├── siemens_stove
+│       │   ├── burners
+│       │   ├── control_knob
+│       │   └── oven_door
+│       └── aeg_stove
+│           ├── burners
+│           ├── control_knob
+│           └── temperature_sensor
 ├── cleaning_device
 │   ├── vacuum
-│   │   ├── motor_unit
-│   │   └── dust_bag
+│   │   ├── dyson_vacuum
+│   │   │   ├── motor_unit
+│   │   │   ├── dust_bag
+│   │   │   └── filtration_system
+│   │   └── electrolux_vacuum
+│   │       ├── motor_unit
+│   │       ├── dust_bag
+│   │       └── filtration_system
 │   ├── laundry_machine
-│   │   ├── drum_unit
-│   │   └── water_filter
+│   │   ├── whirlpool_laundry_machine
+│   │   │   ├── drum_unit
+│   │   │   ├── water_filter
+│   │   │   └── detergent_dispenser
+│   │   └── samsung_laundry_machine
+│   │       ├── drum_unit
+│   │       ├── water_filter
+│   │       └── heater_element
 │   └── steam_iron
-│       ├── steam_generator
-│       └── heat_plate
+│       ├── tefal_steam_iron
+│       │   ├── steam_generator
+│       │   ├── heat_plate
+│       │   └── temperature_control
+│       └── philips_steam_iron
+│           ├── steam_generator
+│           ├── heat_plate
+│           └── auto_shutoff
 ├── entertainment_equipment
 │   ├── television
-│   │   ├── display_screen
-│   │   └── remote_unit
+│   │   ├── sony_tv
+│   │   │   ├── display_screen
+│   │   │   ├── remote_unit
+│   │   │   └── stand
+│   │   └── lg_tv
+│   │       ├── display_screen
+│   │       ├── remote_unit
+│   │       └── screen_stand
 │   └── sound_system
-│       ├── speaker
-│       └── audio_amplifier
+│       ├── jbl_sound_system
+│       │   ├── speaker
+│       │   ├── audio_amplifier
+│       │   └── bass_control
+│       └── bose_sound_system
+│           ├── speaker
+│           ├── audio_amplifier
+│           └── control_panel
 └── climate_control_device
     ├── air_conditioner
-    │   ├── control_board
-    │   └── fan_blade
+    │   ├── daikin_air_conditioner
+    │   │   ├── control_board
+    │   │   ├── fan_blade
+    │   │   └── filter
+    │   └── mitsubishi_air_conditioner
+    │       ├── control_board
+    │       ├── fan_blade
+    │       └── filter
     └── electric_heater
-        ├── heating_element
-        └── thermostat
+        ├── delonghi_heater
+        │   ├── heating_element
+        │   ├── thermostat
+        │   └── safety_switch
+        └── vitek_heater
+            ├── heating_element
+            ├── thermostat
+            └── remote_control
 
 
   ```
